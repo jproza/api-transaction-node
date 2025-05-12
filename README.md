@@ -68,6 +68,7 @@ This will expose:
 
 1. In http://0.0.0.0:8080/ the API for managing transactions and receivables
 2. In http://0.0.0.0:3000/ the API for ids generation.
+3. In http://0.0.0.0:3002/ the API for redis interaction.
 
 ## API Services Overview
 
@@ -103,19 +104,3 @@ depending on your approach to generating unique IDs.
 | `numerator/lock`         | `POST`   | Sets the lock flag (`lock = true`) on the numerator repository, blocking it until the numerator can be accessed. There is a timeout parameter which is the amount of time the system will keep trying to acquire the lock (default timeout is 10,000 milliseconds or 10 seconds) - it does NOT release the lock. It throws an exception on timeout. Only one request can hold the lock at a time, and the lock is not automatically released when the request finishes processing. | `{ "timeout": <number, in milliseconds> }`                        |
 | `numerator/lock`         | `DELETE` | Releases the lock by setting the lock flag to `false`. If it's already `false`, it remains unchanged.                                                                                                                                                                                                                                                      | -                                                |
 
-## Bonus Track (Optional)
-
-**If time permits**, consider implementing the following bonus tasks, while **these tasks are optional**, completing
-them will be viewed favorably in the evaluation process.
-
-### **Calculate Total Receivables per Period**
-
-Develop functionality to calculate the merchant's total receivables per period. The response should include:
-
-- Total amount of receivables.
-- Amount receivable in the future.
-- Total fee charged.
-
-### **List All Merchant Transactions**
-
-Create an endpoint that returns all transactions for a given merchant.
